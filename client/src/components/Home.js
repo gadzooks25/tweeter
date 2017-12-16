@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import TweeterMain from '../images/tweeterlogo.png';
 import TweeterLogo from '../images/tweeter2.png';
+import {getPosts} from '../actions/posts'
 import axios from 'axios';
 import deletePost from '../reducers/posts';
 
