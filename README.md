@@ -1,24 +1,10 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+This is Tweeter
 
 * Deployment instructions
-
+create-repack-app <name of app> --full
+cd into dir/client
+  yarn
+  yarn start
+  start Rails server with Rails s -p 3001
 * ...
