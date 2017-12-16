@@ -29,35 +29,36 @@ class Home extends Component {
   displayPost = () => {
     return this.state.posts.map( post => {
      return(
+          <Link to={`/posts/${post.id}`}>
+          {post.name}
+          </Link>
+=======
       <List>
-        <Link to={`/posts/${post.id}`}>
-        {post.name}
-        </Link>
+          <Link to={`/posts/${post.id}`}>
+          {post.title}
+          </Link>
+>>>>>>> architect
       </List>
      )
     })
   }
 
   render(){
-
       return(
-        <Container text>
-          <Segment basic>
-          <Image src={TweeterMain} centered />
-          <Header as='h1' textAlign='center'>Twitts</Header>
-          <Link to={`/posts/postform`}>
-          <Button primary> Add Post </Button>
-          </Link>
-          <Table fixed>
-            <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Posts</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-            {this.displayPost()}
-          </Table>
-        </Segment>
-      </Container>
+        <Segment basic>
+        <Header as='h1'> Twitts  </Header>
+        <Table fixed>
+          <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Title</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+          {this.displayPost()}
+        </Table>
+        <Link to={'/postform'}>
+        <Button > Add Post </Button>
+        </Link>
+      </Segment>
     )
   }
 }
