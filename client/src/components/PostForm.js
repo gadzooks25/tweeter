@@ -45,11 +45,6 @@ class PostForm extends Component {
         .catch( err => {
           console.log(err);
       })
-<<<<<<< HEAD
-
-
-=======
->>>>>>> architect
   }
 
   handleChange = (e) => {
