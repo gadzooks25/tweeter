@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
+import {
+  Menu,
+  Image
+ } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogout } from '../actions/auth';
+import TweeterLogo from '../images/tweeter2.png';
 
 class NavBar extends Component {
   rightNavs = () => {
@@ -35,7 +39,9 @@ class NavBar extends Component {
       <div>
         <Menu pointing secondary>
           <Link to='/'>
-            <Menu.Item name='home' />
+            <Menu.Item name='home'>
+              <Image size='mini' src={TweeterLogo} />
+            </Menu.Item>
           </Link>
           { this.rightNavs() }
         </Menu>
