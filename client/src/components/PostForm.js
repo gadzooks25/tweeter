@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Label } from 'semantic-ui-react';
+import { Form, Button, Label, Container } from 'semantic-ui-react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -59,12 +59,14 @@ class PostForm extends Component {
     return(
       <div>
       <Form onSubmit={this.handleSubmit}>
+      <Container text>
         <Label>Post Title</Label>
         <Form.Input value={title} id='title' onChange={this.handleChange} />
         <Label>Content</Label>
       <Form.TextArea value={content} id='content' onChange={this.handleChange} />
         <Button as={Link} to={'/'}>Cancel</Button>
         <Button primary type='submit'> Save </Button>
+        </Container>
       </Form>
       </div>
 
