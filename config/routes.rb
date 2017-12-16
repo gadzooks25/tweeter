@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    get 'posts/—skip-routes'
+    get 'posts'
   end
 
   mount_devise_token_auth_for 'User', at: 'api/auth'

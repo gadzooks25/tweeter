@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Header, Segment, Form, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { handleLogin } from '../actions/auth';
+import Logo from '../images/tweeterlogo.png';
 
 class Login extends Component {
   state = { email: '', password: '' };
@@ -22,7 +23,8 @@ class Login extends Component {
     const { email, password } = this.state;
     return (
       <Segment basic>
-        <Header as='h1' textAlign='center'>Login</Header>
+        <div align='center'>
+          <img style={styles.logo} src={Logo} alt='Tweeter Logo' />
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
             <label htmlFor='email'>Email</label>
@@ -49,9 +51,16 @@ class Login extends Component {
             <Button primary type='submit'>Submit</Button>
           </Segment>
         </Form>
+        </div>  
       </Segment>
     );
   }
 }
+
+const styles = {
+      logo: {
+          width: '300px'
+      }
+    }
 
 export default connect()(Login);
