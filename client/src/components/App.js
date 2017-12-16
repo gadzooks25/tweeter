@@ -9,7 +9,8 @@ import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
-
+import PostForm from './PostForm';
+import SinglePost from './SinglePost';
 class App extends Component {
   render() {
     return (
@@ -19,7 +20,10 @@ class App extends Component {
         <FetchUser>
           <Switch>
             <Route exact path='/' component={Home} />
-            <AuthRoute exact path='/login' component={Login} />
+            <ProtectedRoute exact path='/posts/postform' component={PostForm} />
+            <ProtectedRoute exact path='/posts/:id/' component={SinglePost} />
+      
+           <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
             <Route component={NoMatch} />
           </Switch>
