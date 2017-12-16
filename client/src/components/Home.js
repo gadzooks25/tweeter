@@ -19,7 +19,7 @@ class Home extends Component {
   componentDidMount() {
     axios.get(`/api/posts`)
     .then( res => {
-      this.setState({ posts: res.data});
+      this.setState({ posts: res.data})
     })
     .catch( err => {
       console.log(err);
@@ -30,13 +30,13 @@ class Home extends Component {
     return this.state.posts.map( post => {
      return(
        <Segment>
-         <Link to={`/posts/${post.id}`}>
-         {post.name}
-         </Link>
-         <List>
-            <Link to={`/posts/${post.id}`}>
+        <List>
+          <Link to={`/posts/${post.id}`}>
+            {post.name}
+          </Link>
+          <Link to={`/posts/${post.id}`}>
             {post.title}
-            </Link>
+          </Link>
         </List>
       </Segment>
      )
@@ -46,22 +46,22 @@ class Home extends Component {
   render(){
       return(
         <Container text>
-        <Image centered={true} src={TweeterMain} />
-        <Segment basic>
-        <Header as='h1' textAlign='center'>Twitts</Header>
-        <Link to={'/postform'}>
-        <Button primary centered> Add Post </Button>
-        </Link>
-        <Table fixed>
-          <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Twitt</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-          {this.displayPost()}
-        </Table>
-      </Segment>
-      </Container>
+          <Image centered={true} src={TweeterMain} />
+          <Segment basic>
+            <Header as='h1' textAlign='center'>Your Feed</Header>
+            <Link to={'/postform'}>
+            <Button primary centered> Write Twitt </Button>
+            </Link>
+            <Table fixed>
+              <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Recent Twitts</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+              {this.displayPost()}
+            </Table>
+          </Segment>
+        </Container>
     )
   }
 }
