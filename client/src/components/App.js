@@ -21,7 +21,7 @@ class App extends Component {
         <Flash />
         <FetchUser>
           <Switch>
-            <Route exact path='/' component={Home} />
+            <ProtectedRoute exact path='/' component={Home} />
             <ProtectedRoute exact path='/postform' component={PostForm} />
             <ProtectedRoute exact path='/posts/:id/' component={SinglePost} />
            <AuthRoute exact path='/login' component={Login} />

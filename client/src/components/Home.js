@@ -10,36 +10,24 @@ import {
   Image
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import TweeterMain from '../images/tweeterlogo.png';
+import { getPosts } from '../actions/posts'
 import axios from 'axios';
 
 class Home extends Component {
-  state = { posts: [] }
 
   componentDidMount() {
-    axios.get(`/api/posts`)
-    .then( res => {
-      this.setState({ posts: res.data});
-    })
-    .catch( err => {
-      console.log(err);
-  });
+    this.props.dispatch(getPosts())
   }
 
   displayPost = () => {
-    return this.state.posts.map( post => {
+    return this.props.posts.map( post => {
      return(
-<<<<<<< HEAD
-      <List>
-          <Link to={`/posts/${post.id}`}>
-          {post.name}
-          </Link>
-=======
       <List> 
           <Link to={`/posts/${post.id}`}> 
           {post.title}
           </Link> 
->>>>>>> fuchai
       </List>
      )
     })
@@ -65,5 +53,8 @@ class Home extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {posts: state.posts }
+}
 
-export default Home;
+export default connect(mapStateToProps)(Home);
