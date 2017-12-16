@@ -2,3 +2,5 @@
   content = Faker::Lorem.paragraph(2)
   Post.create(content: content)
 end
+
+puts 'seeded'

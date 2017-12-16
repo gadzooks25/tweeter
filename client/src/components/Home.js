@@ -46,7 +46,7 @@ class Home extends Component {
   render(){
       return(
         <Container text>
-        <Image centered src={TweeterMain} />
+        <Image centered={true} src={TweeterMain} />
         <Segment basic>
         <Header as='h1' textAlign='center'>Twitts</Header>
         <Link to={'/postform'}>
@@ -55,7 +55,7 @@ class Home extends Component {
         <Table fixed>
           <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Title</Table.HeaderCell>
+            <Table.HeaderCell>Twitt</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
           {this.displayPost()}
