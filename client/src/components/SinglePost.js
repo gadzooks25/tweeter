@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { addComment } from '../actions/comments';
 import avatar from '../images/joe.jpg'
-import { Container, Header, Button, Comment, Form, Segment, Grid } from 'semantic-ui-react';
+import { 
+Container,
+   Header, 
+   Button,
+   Comment, 
+   Form, 
+   Segment, 
+   Grid,
+   Icon } from 'semantic-ui-react';
 
 class SinglePost extends Component {
   state = { post: {} }; 
@@ -31,30 +38,32 @@ class SinglePost extends Component {
       });
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { name } = this.state;
-    const { id, dispatch } = this.props;
-    const comment = { id, name };
-    dispatch(addComment(comment))
-    this.setState({ name: ''})
-  }
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const { name } = this.state;
+  //   const { id, dispatch } = this.props;
+  //   const comment = { id, name };
+  //   dispatch(addComment(comment))
+  //   this.setState({ name: ''})
+  // }
 
   handleChange = (e) => 
   this.setState({ name: e.target.value })
+
   render(){
-    // const { post } = this.state.post
     const { id, deletePost } = this.state.post
     return (
       <Container text> 
           <Segment color='red'>
-             Here is a post
+            {this.state.post.title}
+             {this.state.post.content} 
              <br /> 
-          <Button onClick={() => this.deletePost(id)}> Delete </Button> 
-          <Button> Edit </Button>
+             <Icon name='delete' positive onClick={() => this.deletePost(id)}> </Icon>
+             <Icon name='edit'> </Icon>
+  
           <Comment.Group> 
               <Comment>
-              <img src={avatar} alt='avatar' />
+              <img src={avatar} alt='avatar'/>
               <Comment.Content>
                 <Comment.Author as='a'>Joe Henderson</Comment.Author>
                 <Comment.Metadata>
@@ -80,4 +89,4 @@ class SinglePost extends Component {
 
 }
 
-export default connect()(SinglePost);
+export default SinglePost;

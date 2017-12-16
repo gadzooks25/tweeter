@@ -9,15 +9,17 @@ import {
   Image
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import TweeterMain from '../images/tweeterlogo.png';
 import TweeterLogo from '../images/tweeter2.png';
+import {getPosts} from '../actions/posts'
 import axios from 'axios';
 import deletePost from '../reducers/posts';
 
 class Home extends Component {
-  state = { posts: [] }
 
   componentDidMount() {
+    this.props.dispatch(getPosts())
     axios.get('/api/posts')
     .then( res => {
       this.setState({ posts: res.data })
@@ -33,7 +35,7 @@ class Home extends Component {
   }
 
   displayPost = () => {
-    return this.state.posts.map( post => {
+    return this.props.posts.map( post => {
      return(
       <List>
         <Header as='h1' color='blue'>
@@ -49,22 +51,35 @@ class Home extends Component {
   render(){
       return(
         <Container text>
-          <Image centered={true} src={TweeterMain} />
-            <Header as='h1' textAlign='center'>Your Feed</Header>
-            <Link to={'/postform'}>
-            <Button primary> Write Twitt </Button>
-            </Link>
-            <Table fixed>
-              <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Recent Twitts</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-              {this.displayPost()}
-            </Table>
-        </Container>
+        <Image centered={true} src={TweeterMain} />
+        <Segment basic>
+        <Header as='h1' textAlign='center'>The World of Twitts</Header>
+          <Button>
+            <Link to='/postform'>
+            <div class="ui animated fade button" tabindex="0">
+              <div class="visible content">Write Twitt</div>
+                <div class="hidden content">
+                    Wow Us
+                </div>
+              </div>
+              </Link>
+            </Button>
+        <Table fixed>
+          <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Twitt</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+          {this.displayPost()}
+        </Table>
+      </Segment>
+      </Container>
     )
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {posts: state.posts }
+}
+
+export default connect(mapStateToProps)(Home);
