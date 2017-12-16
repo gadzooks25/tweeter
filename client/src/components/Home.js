@@ -41,8 +41,7 @@ class Home extends Component {
         <Header as='h1' color='blue'>
           <Image size='mini' src={TweeterLogo} />
           <Link to={`/posts/${post.id}`}>{post.title}</Link>
-          <Button color='red' onClick={ () => this.deletePost(post.id)}>Delete</Button>
-        </Header>
+       </Header>
       </List>
      )
     })

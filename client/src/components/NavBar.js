@@ -15,6 +15,9 @@ class NavBar extends Component {
     if (user.id) {
       return (
         <Menu.Menu position='right'>
+          <Link to='/bio'>
+           <Menu.Item name='Bio' />
+            </Link>
           <Menu.Item
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}
@@ -24,9 +27,6 @@ class NavBar extends Component {
     }
     return (
       <Menu.Menu position='right'>
-        <Link to='/bio'>
-           <Menu.Item name='Bio' />
-            </Link>
         <Link to='/register'>
           <Menu.Item name='Register' />
         </Link>
