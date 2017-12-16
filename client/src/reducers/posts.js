@@ -1,9 +1,19 @@
 const posts = ( state = [], action ) => {
-  switch (action.type) {
+  switch(action.type) {
+    case 'POSTS':
+      return action.posts
+    case 'ADD_POST':
+      return [action.post, ...state];
+    case 'UPDATE_POST':
+      return state.map ( p => {
+        if (p.id === action.post.id)
+          return action.post
+        return p
+      })
     case 'DELETE_POST':
-      return state.filter( p => p.id !== action.id )
+      return state.filter( post => post.id !== action.id)
     default:
-      return state;
+      return state
   }
 }
 

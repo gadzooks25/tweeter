@@ -5,9 +5,12 @@ import { Form, Button, Label } from 'semantic-ui-react';
 import { Form, Button, Label, Container } from 'semantic-ui-react';
 >>>>>>> architect
 import { Link, Redirect } from 'react-router-dom';
+import { addPost, updatePost } from '../actions/posts';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 class PostForm extends Component {
+<<<<<<< HEAD
 <<<<<<< HEAD
   state = { post: { name: '', body: ''} };
 =======
@@ -79,11 +82,20 @@ class PostForm extends Component {
 
 =======
 >>>>>>> architect
+=======
+  state = {  title: '', content: '' };
+
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let post = { title: this.state.title, content: this.state.content }
+    this.props.dispatch(addPost(post))
+>>>>>>> 1a1aa583a1a8750690ed24b76214d17676c67919
   }
 
   handleChange = (e) => {
-    const { id, value } = e.target;
-    this.setState({ post: {...this.state.post, [id]: value } })
+    let { id, value } = e.target
+    this.setState({ [id]: value })
   }
 
 
@@ -116,7 +128,7 @@ class PostForm extends Component {
       </div> 
 =======
   render() {
-    const { title, content } = this.state.post;
+    const { title, content } = this.state;
 
     return(
       <div>
@@ -131,14 +143,21 @@ class PostForm extends Component {
         </Container>
       </Form>
       </div>
+<<<<<<< HEAD
 >>>>>>> architect
 
+=======
+>>>>>>> 1a1aa583a1a8750690ed24b76214d17676c67919
     );
   }
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default PostForm;
 =======
 export default PostForm;
 >>>>>>> architect
+=======
+export default connect()(PostForm);
+>>>>>>> 1a1aa583a1a8750690ed24b76214d17676c67919

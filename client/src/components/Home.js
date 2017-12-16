@@ -13,19 +13,21 @@ import {
   Image
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import TweeterMain from '../images/tweeterlogo.png';
 <<<<<<< HEAD
 import axios from 'axios';
 =======
 import TweeterLogo from '../images/tweeter2.png';
+import {getPosts} from '../actions/posts'
 import axios from 'axios';
 import deletePost from '../reducers/posts';
 >>>>>>> architect
 
 class Home extends Component {
-  state = { posts: [] }
 
   componentDidMount() {
+<<<<<<< HEAD
 <<<<<<< HEAD
     axios.get(`/api/posts`)
     .then( res => {
@@ -35,6 +37,9 @@ class Home extends Component {
       console.log(err);
   });
 =======
+=======
+    this.props.dispatch(getPosts())
+>>>>>>> 1a1aa583a1a8750690ed24b76214d17676c67919
     axios.get('/api/posts')
     .then( res => {
       this.setState({ posts: res.data })
@@ -57,7 +62,7 @@ class Home extends Component {
   }
 
   displayPost = () => {
-    return this.state.posts.map( post => {
+    return this.props.posts.map( post => {
      return(
       <List>
 <<<<<<< HEAD
@@ -119,5 +124,13 @@ class Home extends Component {
   }
 }
 
+<<<<<<< HEAD
 
 export default Home;
+=======
+const mapStateToProps = (state) => {
+  return {posts: state.posts }
+}
+
+export default connect(mapStateToProps)(Home);
+>>>>>>> 1a1aa583a1a8750690ed24b76214d17676c67919
