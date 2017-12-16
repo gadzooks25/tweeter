@@ -48,10 +48,17 @@ class Home extends Component {
         <Container text>
         <Image centered={true} src={TweeterMain} />
         <Segment basic>
-        <Header as='h1' textAlign='center'>Twitts</Header>
-        <Link to={'/postform'}>
-        <Button primary centered> Add Post </Button>
-        </Link>
+        <Header as='h1' textAlign='center'>The World of Twitts</Header>
+          <Button>
+            <Link to='/postform'>
+            <div class="ui animated fade button" tabindex="0">
+              <div class="visible content">Write Twitt</div>
+                <div class="hidden content">
+                    Wow Us
+                </div>
+              </div>
+              </Link>
+            </Button>
         <Table fixed>
           <Table.Header>
           <Table.Row>

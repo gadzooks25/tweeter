@@ -61,7 +61,7 @@ class Login extends Component {
             </Button>
           </Segment> 
           
-          {/* <label htmlFor='password'>Or</label> */}
+      
           <Segment textAlign='center' basic>
           <Button>
             <Link to='/register'>
