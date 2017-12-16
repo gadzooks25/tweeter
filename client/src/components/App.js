@@ -11,17 +11,18 @@ import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import { Switch, Route } from 'react-router-dom';
+import { Segment } from 'semantic-ui-react';
 
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <Segment>
         <NavBar />
         <Flash />
         <FetchUser>
           <Switch>
-            <Route exact path='/' component={Home} />
+            <ProtectedRoute exact path='/' component={Home} />
             <ProtectedRoute exact path='/postform' component={PostForm} />
             <ProtectedRoute exact path='/posts/:id/' component={SinglePost} />
            <AuthRoute exact path='/login' component={Login} />
@@ -29,7 +30,7 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
         </FetchUser>
-      </div>
+      </Segment>
     );
   }
 }

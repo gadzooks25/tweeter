@@ -5,40 +5,51 @@ import {
   Segment,
   List,
   Button,
-  Icon,
   Container,
   Image
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import TweeterMain from '../images/tweeterlogo.png';
+import TweeterLogo from '../images/tweeter2.png';
+import {getPosts} from '../actions/posts'
 import axios from 'axios';
+import deletePost from '../reducers/posts';
 
 class Home extends Component {
-  state = { posts: [] }
 
   componentDidMount() {
-    axios.get(`/api/posts`)
+    this.props.dispatch(getPosts())
+    axios.get('/api/posts')
     .then( res => {
-      this.setState({ posts: res.data});
+      this.setState({ posts: res.data })
     })
     .catch( err => {
       console.log(err);
-  });
+    });
+  }
+
+  deletePost = () => {
+    window.confirm("Delete Post?")
+    axios.delete(`/api/posts/${this.state.post.id}`)
+      .then( res => {
+        this.props.history.push('/')
+      })
+      .catch( err => {
+        console.log(err)
+      });
   }
 
   displayPost = () => {
-    return this.state.posts.map( post => {
+    return this.props.posts.map( post => {
      return(
-       <Segment>
-         <Link to={`/posts/${post.id}`}>
-         {post.name}
-         </Link>
-         <List>
-            <Link to={`/posts/${post.id}`}>
-            {post.title}
-            </Link>
-        </List>
-      </Segment>
+      <List>
+        <Header as='h1' color='blue'>
+          <Image size='mini' src={TweeterLogo} />
+          <Link to={`/posts/${post.id}`}>{post.title}</Link>
+          <Button color='red' onClick={deletePost}>Delete</Button>
+        </Header>
+      </List>
      )
     })
   }
@@ -73,5 +84,8 @@ class Home extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {posts: state.posts }
+}
 
-export default Home;
+export default connect(mapStateToProps)(Home);
