@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Segment, Header, Image, Card, Icon } from 'semantic-ui-react';
+import { Segment, Header, Image, Card, Icon, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Berz from '../images/matthew.png';
 
 const Bio = () => (
- <Segment basic>
+ <Container text centered="true">
    <Header> Super Awesome Bio </Header>
    <Card>
    <Image src={Berz} />
@@ -28,7 +28,7 @@ const Bio = () => (
      </a>
    </Card.Content>
  </Card>
- </Segment> 
+ </Container>
 )
 
 export default Bio;
