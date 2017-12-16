@@ -27,15 +27,9 @@ class Home extends Component {
     });
   }
 
-  deletePost = () => {
-    window.confirm("Delete Post?")
-    axios.delete(`/api/posts/${this.state.post.id}`)
-      .then( res => {
-        this.props.history.push('/')
-      })
-      .catch( err => {
-        console.log(err)
-      });
+  deletePost = (id) => {
+    const { posts } = this.state;
+    this.setState({ posts: posts.filter( p => p.id !== id) })
   }
 
   displayPost = () => {
@@ -45,7 +39,7 @@ class Home extends Component {
         <Header as='h1' color='blue'>
           <Image size='mini' src={TweeterLogo} />
           <Link to={`/posts/${post.id}`}>{post.title}</Link>
-          <Button color='red' onClick={deletePost}>Delete</Button>
+          <Button color='red' onClick={ () => this.deletePost(post.id)}>Delete</Button>
         </Header>
       </List>
      )
