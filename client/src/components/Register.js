@@ -35,6 +35,7 @@ class Register extends Component {
           <img style={styles.logo} src={Logo} alt='Tweeter Logo' />
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
+          <Container text>
             <label htmlFor='email'>Email</label>
             <input
               id='email'
@@ -43,8 +44,10 @@ class Register extends Component {
               value={email}
               onChange={this.handleChange}
             />
+            </Container>
           </Form.Field>
           <Form.Field>
+          <Container text>
             <label htmlFor='password'>Password</label>
             <input
               id='password'
@@ -54,8 +57,10 @@ class Register extends Component {
               value={password}
               onChange={this.handleChange}
             />
+            </Container>
           </Form.Field>
           <Form.Field>
+          <Container text>
             <label htmlFor='passwordConfirmation'>Password Confirmation</label>
             <input
               id='passwordConfirmation'
@@ -65,6 +70,7 @@ class Register extends Component {
               value={passwordConfirmation}
               onChange={this.handleChange}
             />
+            </Container>
           </Form.Field>
           <Segment basic textAlign='center'>
           <Button type='submit'>

@@ -29,6 +29,7 @@ class Login extends Component {
           <img style={styles.logo} src={Logo} alt='Tweeter Logo' />
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
+          <Container text>
             <label htmlFor='email'>Email</label>
             <input
               required
@@ -37,8 +38,11 @@ class Login extends Component {
               placeholder='Email'
               onChange={this.handleChange}
             />
+            </Container>
           </Form.Field>
+          
           <Form.Field>
+          <Container text>
             <label htmlFor='password'>Password</label>
             <input
               required
@@ -48,6 +52,7 @@ class Login extends Component {
               type='password'
               onChange={this.handleChange}
             />
+            </Container>
           </Form.Field>
 
           <Segment textAlign='center' basic>
