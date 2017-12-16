@@ -38,15 +38,6 @@ class SinglePost extends Component {
       });
   }
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const { name } = this.state;
-  //   const { id, dispatch } = this.props;
-  //   const comment = { id, name };
-  //   dispatch(addComment(comment))
-  //   this.setState({ name: ''})
-  // }
-
   handleChange = (e) => 
   this.setState({ name: e.target.value })
 
@@ -55,11 +46,14 @@ class SinglePost extends Component {
     return (
       <Container text> 
           <Segment color='red'>
-            {this.state.post.title}
+            <Header> {this.state.post.title}</Header> 
+            <hr />
              {this.state.post.content} 
              <br /> 
              <Icon name='delete' positive onClick={() => this.deletePost(id)}> </Icon>
+             <Link to={'/posts/:id/edit'}> 
              <Icon name='edit'> </Icon>
+             </Link> 
   
           <Comment.Group> 
               <Comment>
