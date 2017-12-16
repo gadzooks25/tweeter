@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
-import { Header, Table, Segment, List, Button, Icon } from 'semantic-ui-react';
+import {
+  Header,
+  Table,
+  Segment,
+  List,
+  Button,
+  Icon,
+  Container,
+  Image
+} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import TweeterMain from '../images/tweeterlogo.png';
 import axios from 'axios';
 
 class Home extends Component {
@@ -19,38 +29,38 @@ class Home extends Component {
   displayPost = () => {
     return this.state.posts.map( post => {
      return(
-      <List> 
-          <Link to={`/posts/${post.id}`}> 
+      <List>
+          <Link to={`/posts/${post.id}`}>
           {post.name}
-          </Link> 
+          </Link>
       </List>
      )
     })
   }
 
   render(){
-   
-      return( 
-        <Segment basic>
-        <Header as='h1'> Twitts  </Header>
-        <Table fixed> 
-          <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-          {this.displayPost()}
-        </Table>   
-        <Link to={`/posts/postform`}> 
-        <Button > Add Post </Button> 
-        </Link> 
-      </Segment>
+
+      return(
+        <Container text>
+          <Segment basic>
+          <Image src={TweeterMain} centered />
+          <Header as='h1' textAlign='center'>Twitts</Header>
+          <Link to={`/posts/postform`}>
+          <Button primary> Add Post </Button>
+          </Link>
+          <Table fixed>
+            <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Posts</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+            {this.displayPost()}
+          </Table>
+        </Segment>
+      </Container>
     )
   }
 }
 
 
 export default Home;
-
-
-
