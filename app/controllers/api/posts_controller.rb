@@ -37,7 +37,11 @@ class Api::PostsController < ApplicationController
   end 
 
   def post_params
+<<<<<<< HEAD
     params.require(:post).permit(:name, :body)
+=======
+    params.require(:post).permit(:title, :content)
+>>>>>>> architect
   end 
 end
 
