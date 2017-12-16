@@ -29,15 +29,9 @@ class Home extends Component {
     });
   }
 
-  deletePost = () => {
-    window.confirm("Delete Post?")
-    axios.delete(`/api/posts/${this.state.post.id}`)
-      .then( res => {
-        this.props.history.push('/')
-      })
-      .catch( err => {
-        console.log(err)
-      });
+  deletePost = (id) => {
+    const { posts } = this.state;
+    this.setState({ posts: posts.filter( p => p.id !== id) })
   }
 
   displayPost = () => {
@@ -47,7 +41,7 @@ class Home extends Component {
         <Header as='h1' color='blue'>
           <Image size='mini' src={TweeterLogo} />
           <Link to={`/posts/${post.id}`}>{post.title}</Link>
-          <Button color='red' onClick={deletePost}>Delete</Button>
+          <Button color='red' onClick={ () => this.deletePost(post.id)}>Delete</Button>
         </Header>
       </List>
      )
@@ -57,20 +51,29 @@ class Home extends Component {
   render(){
       return(
         <Container text>
-          <Image centered={true} src={TweeterMain} />
-            <Header as='h1' textAlign='center'>Your Feed</Header>
-            <Link to={'/postform'}>
-            <Button primary> Write Twitt </Button>
-            </Link>
-            <Table fixed>
-              <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Recent Twitts</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-              {this.displayPost()}
-            </Table>
-        </Container>
+        <Image centered={true} src={TweeterMain} />
+        <Segment basic>
+        <Header as='h1' textAlign='center'>The World of Twitts</Header>
+          <Button>
+            <Link to='/postform'>
+            <div class="ui animated fade button" tabindex="0">
+              <div class="visible content">Write Twitt</div>
+                <div class="hidden content">
+                    Wow Us
+                </div>
+              </div>
+              </Link>
+            </Button>
+        <Table fixed>
+          <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Twitt</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+          {this.displayPost()}
+        </Table>
+      </Segment>
+      </Container>
     )
   }
 }

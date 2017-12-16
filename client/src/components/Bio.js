@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Segment, Header } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
 const Bio = () => (
   <Segment basic> 
