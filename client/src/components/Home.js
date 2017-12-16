@@ -12,27 +12,41 @@ import { Link } from 'react-router-dom';
 import TweeterMain from '../images/tweeterlogo.png';
 import TweeterLogo from '../images/tweeter2.png';
 import axios from 'axios';
+import deletePost from '../reducers/posts';
 
 class Home extends Component {
   state = { posts: [] }
 
   componentDidMount() {
-    axios.get(`/api/posts`)
+    axios.get('/api/posts')
     .then( res => {
       this.setState({ posts: res.data })
     })
     .catch( err => {
       console.log(err);
-  });
+    });
+  }
+
+  deletePost = () => {
+    window.confirm("Delete Post?")
+    axios.delete(`/api/posts/${this.state.post.id}`)
+      .then( res => {
+        this.props.history.push('/')
+      })
+      .catch( err => {
+        console.log(err)
+      });
   }
 
   displayPost = () => {
     return this.state.posts.map( post => {
      return(
       <List>
-        <Link to={`/posts/${post.id}`}>
-         <Header as='h1' color='blue'><Image size='mini' src={TweeterLogo} />{post.title}</Header>
-        </Link>
+        <Header as='h1' color='blue'>
+          <Image size='mini' src={TweeterLogo} />
+          <Link to={`/posts/${post.id}`}>{post.title}</Link>
+          <Button color='red' onClick={deletePost}>Delete</Button>
+        </Header>
       </List>
      )
     })
@@ -58,6 +72,5 @@ class Home extends Component {
     )
   }
 }
-
 
 export default Home;
