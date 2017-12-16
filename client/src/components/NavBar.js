@@ -43,6 +43,11 @@ class NavBar extends Component {
               <Image size='mini' src={TweeterLogo} />
             </Menu.Item>
           </Link>
+          <Link to='/'>
+            <Menu.Item name='posts'>
+              Post
+            </Menu.Item>
+          </Link>
           { this.rightNavs() }
         </Menu>
       </div>

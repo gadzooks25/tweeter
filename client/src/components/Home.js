@@ -30,9 +30,9 @@ class Home extends Component {
     return this.state.posts.map( post => {
      return(
       <List>
-          <Link to={`/posts/${post.id}`}>
-          {post.name}
-          </Link>
+        <Link to={`/posts/${post.id}`}>
+        {post.name}
+        </Link>
       </List>
      )
     })

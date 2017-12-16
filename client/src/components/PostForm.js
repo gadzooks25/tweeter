@@ -65,7 +65,7 @@ class PostForm extends Component {
   //     </div>
   //   )
   // }
-
+fdd
   render() {
     const { name, body } = this.state.post;
 
@@ -79,7 +79,7 @@ class PostForm extends Component {
         <Button as={Link} to={`/posts`}>Cancel</Button>
         <Button primary type='submit'> Save </Button>
       </Form>
-      </div> 
+      </div>
     );
   }
 }
