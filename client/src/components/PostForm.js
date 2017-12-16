@@ -30,7 +30,7 @@ class PostForm extends Component {
       axios.put(baseUrl, params)
         .then(res => {
           this.props.history.push(`/posts/${id}`);
-          
+
         })
         .catch( err => {
           console.log(err);
@@ -40,12 +40,12 @@ class PostForm extends Component {
         .then(res => {
           this.setState({ post: { name: '', body: '' }});
           this.props.addPost(res.data);
-          
+
         })
         .catch( err => {
           console.log(err);
       })
-     
+
 
   }
 
@@ -59,10 +59,10 @@ class PostForm extends Component {
   // saveButton = () => {
   //   debugger
   //     return(
-  //       <div> 
+  //       <div>
   //     {/* <Button primary type='submit'> Save </Button>  */}
-  //     <Redirect to={'/posts'}/> 
-  //     </div> 
+  //     <Redirect to={'/posts'}/>
+  //     </div>
   //   )
   // }
 
@@ -70,18 +70,16 @@ class PostForm extends Component {
     const { name, body } = this.state.post;
 
     return(
-      <div> 
+      <div>
       <Form onSubmit={this.handleSubmit}>
         <Label>Post Title</Label>
         <Form.Input value={name} id='name' onChange={this.handleChange} />
         <Label>Content</Label>
       <Form.TextArea value={body} id='body' onChange={this.handleChange} />
-        <Button as={Link} to={`/posts`}>Cancel</Button> 
-        <Button primary type='submit'> Save </Button>         
+        <Button as={Link} to={`/posts`}>Cancel</Button>
+        <Button primary type='submit'> Save </Button>
       </Form>
-      <Redirect to={'/posts'}/> 
       </div> 
-
     );
   }
 }
