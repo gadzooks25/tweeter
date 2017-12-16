@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Header, Form, Button, Segment } from 'semantic-ui-react';
+import { Header, Form, Button, Segment, Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions/auth';
 import { setFlash } from '../actions/flash';
+import Logo from '../images/tweeterlogo.png';
 
 class Register extends Component {
   state = { email: '', password: '', passwordConfirmation: '' };
@@ -28,10 +29,13 @@ class Register extends Component {
     const { email, password, passwordConfirmation } = this.state;
 
     return (
+      <Container text>
       <Segment basic>
-        <Header as='h1' textAlign='center'>Register Component</Header>
+        <div align='center'>
+          <img style={styles.logo} src={Logo} alt='Tweeter Logo' />
         <Form onSubmit={this.handleSubmit}>
           <Form.Field>
+          <Container text>
             <label htmlFor='email'>Email</label>
             <input
               id='email'
@@ -40,8 +44,10 @@ class Register extends Component {
               value={email}
               onChange={this.handleChange}
             />
+            </Container>
           </Form.Field>
           <Form.Field>
+          <Container text>
             <label htmlFor='password'>Password</label>
             <input
               id='password'
@@ -51,8 +57,10 @@ class Register extends Component {
               value={password}
               onChange={this.handleChange}
             />
+            </Container>
           </Form.Field>
           <Form.Field>
+          <Container text>
             <label htmlFor='passwordConfirmation'>Password Confirmation</label>
             <input
               id='passwordConfirmation'
@@ -62,13 +70,29 @@ class Register extends Component {
               value={passwordConfirmation}
               onChange={this.handleChange}
             />
+            </Container>
           </Form.Field>
           <Segment basic textAlign='center'>
-            <Button type='submit'>Submit</Button>
+          <Button type='submit'>
+            <div class="ui animated fade button" tabindex="0">
+              <div class="visible content">Sign Up</div>
+                <div class="hidden content">
+                    You're Crazy
+                </div>
+              </div>
+            </Button>
           </Segment>
         </Form>
+        </div>
       </Segment>
+      </Container>
     );
+  }
+}
+
+const styles = {
+  logo: {
+      width: '300px'
   }
 }
 

@@ -1,5 +1,6 @@
-50.times do 
+50.times do
   content = Faker::Lorem.paragraph(2)
   Post.create(content: content)
-end 
+end
 
+puts 'seeded'
