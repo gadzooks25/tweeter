@@ -21,7 +21,7 @@ class Home extends Component {
      return(
       <List> 
           <Link to={`/posts/${post.id}`}> 
-          {post.name}
+          {post.title}
           </Link> 
       </List>
      )
@@ -29,19 +29,18 @@ class Home extends Component {
   }
 
   render(){
-   
       return( 
         <Segment basic>
         <Header as='h1'> Twitts  </Header>
         <Table fixed> 
           <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
+            <Table.HeaderCell>Title</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
           {this.displayPost()}
         </Table>   
-        <Link to={`/posts/postform`}> 
+        <Link to={'/postform'}> 
         <Button > Add Post </Button> 
         </Link> 
       </Segment>
